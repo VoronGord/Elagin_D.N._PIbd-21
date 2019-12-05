@@ -52,6 +52,7 @@
     <Compile Include="FormLincor.Designer.cs">
       <DependentUpon>FormLincor.cs</DependentUpon>
     </Compile>
+    <Compile Include="IShip.cs" />
     <Compile Include="Lincor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
