@@ -56,6 +56,8 @@
     <Compile Include="Lincor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ship.cs" />
+    <Compile Include="WarShip.cs" />
     <EmbeddedResource Include="FormLincor.resx">
       <DependentUpon>FormLincor.cs</DependentUpon>
     </EmbeddedResource>
