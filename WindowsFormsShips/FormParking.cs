@@ -15,6 +15,9 @@ namespace WindowsFormsShips
         /// <summary>         /// Объект от класса многоуровневой парковки         /// </summary>  
         MultiLevelParking parking;
 
+        FormShipConfing form;
+
+
         /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
 
@@ -119,6 +122,31 @@ namespace WindowsFormsShips
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw(); 
+        }
+
+        
+
+        private void AddShip(IShip ship)
+        {
+            if (ship != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxLevels.SelectedIndex] + ship;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Корабль не удалось поставить");
+                }
+            }
+        }
+
+        private void SetShip_Click(object sender, EventArgs e)
+        {
+            form = new FormShipConfing();
+            form.AddEvent(AddShip);
+            form.Show();
         }
     }
 }

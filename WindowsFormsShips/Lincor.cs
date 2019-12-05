@@ -65,5 +65,11 @@ namespace WindowsFormsShips
 
         }
 
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+           
+        }
+
     }
 }
