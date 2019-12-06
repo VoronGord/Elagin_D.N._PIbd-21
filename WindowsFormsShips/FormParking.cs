@@ -46,49 +46,8 @@ namespace WindowsFormsShips
             }
         }
 
-        /// <summary>         /// Обработка нажатия кнопки "Припарковать автомобиль"    
-        /// /// </summary>         /// <param name="sender"></param>      
-        /// /// <param name="e"></param>    
-        private void buttonGenerWarShip_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var ship = new War_Ship(100, 1000, dialog.Color);
-                    int place = parking[listBoxLevels.SelectedIndex] + ship;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
-        /// <summary>         /// Обработка нажатия кнопки "Припарковать гоночный автомобиль" 
-        /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>    
-        private void buttonGenerLincor_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var ship = new Lincor(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        int place = parking[listBoxLevels.SelectedIndex] + ship;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
+      
+        
 
 
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
@@ -100,13 +59,13 @@ namespace WindowsFormsShips
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
+                    if (ship != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 35, pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
-                        car.DrawShip(gr); pictureBoxTakeShip.Image = bmp;
+                        ship.SetPosition(5, 35, pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
+                        ship.DrawShip(gr); pictureBoxTakeShip.Image = bmp;
                     }
                     else
                     {
@@ -147,6 +106,41 @@ namespace WindowsFormsShips
             form = new FormShipConfing();
             form.AddEvent(AddShip);
             form.Show();
+        }
+
+
+
+
+        /// <summary>         /// Обработка нажатия пункта меню "Сохранить"         /// </summary>    
+        /// /// <param name="sender"></param>         /// <param name="e"></param>   
+
+        private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else { MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>         /// Обработка нажатия пункта меню "Загрузить"         /// </summary>      
+        /// <param name="sender"></param>         /// <param name="e"></param>   
+        private void ЗагрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.LoadData(openFileDialog.FileName))
+                {
+
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else { MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                Draw();
+            }
         }
     }
 }

@@ -41,6 +41,23 @@ namespace WindowsFormsShips
         }
 
 
+
+        public Lincor(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 8)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                SpeedWater = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Gun = Convert.ToBoolean(strs[4]);
+                Anchor = Convert.ToBoolean(strs[5]);
+                Boat = Convert.ToBoolean(strs[6]);
+            }
+        }
+
+
         public override void DrawShip(Graphics g)
         {
             Brush brDop = new SolidBrush(DopColor);
@@ -69,6 +86,11 @@ namespace WindowsFormsShips
         {
             DopColor = color;
            
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Gun + ";" + Anchor + ";" + Boat;
         }
 
     }
