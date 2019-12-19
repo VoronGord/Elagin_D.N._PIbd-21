@@ -51,7 +51,7 @@ namespace WindowsFormsShips
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -78,7 +78,7 @@ namespace WindowsFormsShips
                 p._places.Remove(index);
                 return ship;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
 
         /// <summary>     
@@ -133,19 +133,23 @@ namespace WindowsFormsShips
                 {
                     return _places[ind];
                 }
-                return null;
-            } 
+                throw new ParkingNotFoundException(ind);
+            }
 
-             set
-             {
+
+
+            set
+            {
                 if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
-                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
-
-                 }
-
-             }
+                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 35, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
+                }
+            }
         }
     }
 }
