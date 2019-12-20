@@ -17,7 +17,7 @@ namespace WindowsFormsShips
 
         Right
     }
-    public class Lincor : War_Ship
+    public class Lincor : War_Ship, IComparable<Lincor>, IEquatable<Lincor>
     {
 
         public Color DopColor { private set; get; }
@@ -91,6 +91,85 @@ namespace WindowsFormsShips
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Gun + ";" + Anchor + ";" + Boat;
+        }
+
+        public int CompareTo(Lincor other)
+        {
+            var res = (this is War_Ship).CompareTo(other is War_Ship);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (Gun != other.Gun)
+            {
+                return Gun.CompareTo(other.Gun);
+            }
+            if (Anchor != other.Anchor)
+            {
+                return Anchor.CompareTo(other.Anchor);
+            }
+            if (Boat != other.Boat)
+            {
+                return Boat.CompareTo(other.Boat);
+            }
+
+            return 0;
+        }
+
+
+        public bool Equals(Lincor other)
+        {
+            var res = (this as War_Ship).Equals(other as War_Ship);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Gun != other.Gun)
+            {
+                return false;
+            }
+
+            if (Anchor != other.Anchor)
+            {
+                return false;
+            }
+            if (Boat != other.Boat)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null) { return false; }
+
+            if (!(obj is Lincor lincorObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(lincorObj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
     }

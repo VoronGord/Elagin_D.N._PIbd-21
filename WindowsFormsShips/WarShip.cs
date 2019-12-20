@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsShips
 {
-    public class War_Ship : Ship
+    public class War_Ship : Ship, IComparable<War_Ship>, IEquatable<War_Ship>
     {         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Width = 100;
 
@@ -95,5 +95,80 @@ namespace WindowsFormsShips
         {
             return MaxSpeed + ";" + SpeedWater + ";" + MainColor.Name;
         }
+
+
+
+
+        public int CompareTo(War_Ship other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (SpeedWater != other.SpeedWater)
+            {
+                return SpeedWater.CompareTo(other.SpeedWater);
+            }
+            if (MainColor != other.MainColor)
+            {
+               return MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(War_Ship other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)    
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (SpeedWater != other.SpeedWater)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is War_Ship lincorObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(lincorObj);
+            }
+        }
+
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }
