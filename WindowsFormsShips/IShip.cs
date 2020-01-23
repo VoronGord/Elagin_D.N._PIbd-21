@@ -30,5 +30,6 @@ namespace WindowsFormsShips
         /// <param name="g"></param>  
         void DrawShip(Graphics g);
 
+        void SetMainColor(Color color);
     }
 }

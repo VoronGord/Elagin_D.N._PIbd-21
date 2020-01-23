@@ -75,7 +75,6 @@ namespace WindowsFormsShips
         {
             return !_places.ContainsKey(index);
         }
-
         /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   

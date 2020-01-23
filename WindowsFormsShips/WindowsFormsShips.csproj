@@ -60,6 +60,12 @@
     <Compile Include="FormParking.Designer.cs">
       <DependentUpon>FormParking.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormShipConfing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShipConfing.Designer.cs">
+      <DependentUpon>FormShipConfing.cs</DependentUpon>
+    </Compile>
     <Compile Include="IShip.cs" />
     <Compile Include="Lincor.cs" />
     <Compile Include="MultiLevelParking.cs" />
@@ -74,6 +80,9 @@
 
     <EmbeddedResource Include="FormParking.resx">
       <DependentUpon>FormParking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShipConfing.resx">
+      <DependentUpon>FormShipConfing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

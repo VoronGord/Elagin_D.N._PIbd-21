@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 namespace WindowsFormsShips
 {
     public class Lincor : War_Ship
+    {
+        public Color DopColor { private set; get; }
 
     public class Lincor
     {
@@ -101,6 +103,11 @@ namespace WindowsFormsShips
                 g.FillRectangle(brDop, _startPosX + 50, _startPosY - 2, 10, 4);
                 g.FillRectangle(brDop, _startPosX + 10, _startPosY - 2, 10, 4);
             }
+        }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;    
         }
     }
 }
