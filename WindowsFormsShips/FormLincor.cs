@@ -36,7 +36,6 @@ namespace WindowsFormsShips
             Draw();
         }
 
-
         private void buttonMove_Click(object sender, EventArgs e)
         {//получаем имя кнопкиs
             string name = (sender as Button).Name;

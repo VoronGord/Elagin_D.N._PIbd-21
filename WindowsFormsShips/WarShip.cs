@@ -65,14 +65,9 @@ namespace WindowsFormsShips
 
             // отрисовка палубы 
             Brush brMain = new SolidBrush(MainColor);
-
-
-
-
             g.FillRectangle(brMain, _startPosX + 3, _startPosY + 5, Lincor_Width - 10, 5);
             g.FillRectangle(brMain, _startPosX, _startPosY, Lincor_Width - 5, 5);
             g.FillRectangle(brMain, _startPosX - 6, _startPosY - 5, Lincor_Width + 6, 5);
-
             g.FillRectangle(brMain, _startPosX + 45, _startPosY - 20, 3, 15);
             g.FillRectangle(brMain, _startPosX + 40, _startPosY - 10, 14, 2);
         }

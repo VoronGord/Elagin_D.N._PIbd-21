@@ -7,21 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsShips
 {
-    public enum Direction
-    {
-        Up,
-
-        Down,
-
-        Left,
-
-        Right
-    }
     public class Lincor : War_Ship
     {
-
         public Color DopColor { private set; get; }
-
 
         public bool Gun { private set; get; }
 
@@ -40,12 +28,10 @@ namespace WindowsFormsShips
             Boat = boat;
         }
 
-
         public override void DrawShip(Graphics g)
         {
             Brush brDop = new SolidBrush(DopColor);
             base.DrawShip(g);
-
             if (Gun)
             {
                 g.FillEllipse(brDop, _startPosX + 70, _startPosY - 20, 10, 20);
@@ -70,6 +56,5 @@ namespace WindowsFormsShips
             DopColor = color;
            
         }
-
     }
 }

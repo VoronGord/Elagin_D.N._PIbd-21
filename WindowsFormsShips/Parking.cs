@@ -15,19 +15,14 @@ namespace WindowsFormsShips
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
 
-
         /// <summary>         /// Массив объектов, которые храним         /// </summary>         
-      
-
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
 
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
 
-
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
-
         private const int _placeSizeWidth = 210;
 
         /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
@@ -88,9 +83,6 @@ namespace WindowsFormsShips
         {
             return !_places.ContainsKey(index);
         }
-
-
-
         /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   
@@ -104,7 +96,6 @@ namespace WindowsFormsShips
                 _places[keys[i]].DrawShip(g);
             }
         }
-
         /// <summary> 
         /// Метод отрисовки разметки парковочных мест         /// </summary>         /// <param name="g"></param>  
         private void DrawMarking(Graphics g)
