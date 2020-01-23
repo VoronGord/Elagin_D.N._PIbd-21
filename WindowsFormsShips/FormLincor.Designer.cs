@@ -34,6 +34,7 @@
             this.Down = new System.Windows.Forms.Button();
             this.Left = new System.Windows.Forms.Button();
             this.Right = new System.Windows.Forms.Button();
+            this.GenerWarShip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             this.Right.UseVisualStyleBackColor = true;
             this.Right.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // GenerWarShip
+            // 
+            this.GenerWarShip.Location = new System.Drawing.Point(174, 12);
+            this.GenerWarShip.Name = "GenerWarShip";
+            this.GenerWarShip.Size = new System.Drawing.Size(103, 45);
+            this.GenerWarShip.TabIndex = 6;
+            this.GenerWarShip.Text = "GenerWarShip";
+            this.GenerWarShip.UseVisualStyleBackColor = true;
+            this.GenerWarShip.Click += new System.EventHandler(this.GenerWarShip_Click);
+            // 
             // FormLincor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 514);
+            this.Controls.Add(this.GenerWarShip);
             this.Controls.Add(this.Right);
             this.Controls.Add(this.Left);
             this.Controls.Add(this.Down);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button Down;
         private System.Windows.Forms.Button Left;
         private System.Windows.Forms.Button Right;
+        private System.Windows.Forms.Button GenerWarShip;
     }
 }
 
