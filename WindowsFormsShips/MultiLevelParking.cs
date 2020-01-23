@@ -11,19 +11,12 @@ namespace WindowsFormsShips
     {
         /// <summary>         /// Список с уровнями парковки         /// </summary>    
         List<Parking<IShip>> parkingStages;
-
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
-
         private const int countPlaces = 20;
-
         /// <summary>         /// Ширина окна отрисовки         /// </summary>       
         private int pictureWidth; 
-
         /// <summary>         /// Высота окна отрисовки         /// </summary>  
        private int pictureHeight; 
-
-
-
         /// <summary>         /// Конструктор         /// </summary>    
         /// /// <param name="countStages">Количество уровенй парковки</param>   
         /// /// <param name="pictureWidth"></param>  
@@ -52,7 +45,6 @@ namespace WindowsFormsShips
                 return null;
             }
         }
-
 
         /// <summary>         /// Сохранение информации по автомобилям на парковках в файл         /// </summary>    
         /// <param name="filename">Путь и имя файла</param>         /// <returns></returns>   

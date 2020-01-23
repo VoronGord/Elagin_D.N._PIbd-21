@@ -12,34 +12,18 @@ namespace WindowsFormsShips
         where T : class, IShip { 
         /// <summary>         /// Массив объектов, которые храним         /// </summary>    
         private Dictionary<int, T> _places; 
-
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
-
-
         /// <summary>         /// Массив объектов, которые храним         /// </summary>         
-      
-
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
-
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
-
-
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
-
         private const int _placeSizeWidth = 210;
-
         /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
         private const int _placeSizeHeight = 80;
-
-
-
         private int _currentIndex;
-
-
-
         public int GetKey
         {
             get
@@ -47,9 +31,6 @@ namespace WindowsFormsShips
                 return _places.Keys.ToList()[_currentIndex];
             }
         }
-
-
-
 
         /// <summary>         /// Конструктор         /// </summary>         /// <param name="sizes">Количество мест на парковке</param>   
         /// <param name="pictureWidth">Рамзер парковки - ширина</param>    
@@ -111,8 +92,6 @@ namespace WindowsFormsShips
             return !_places.ContainsKey(index);
         }
 
-
-
         /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   
@@ -158,8 +137,6 @@ namespace WindowsFormsShips
                 throw new ParkingNotFoundException(ind);
             }
 
-
-
             set
             {
                 if (CheckFreePlace(ind))
@@ -174,7 +151,6 @@ namespace WindowsFormsShips
             }
         }
 
-
         public T Current
         {
             get
@@ -182,7 +158,6 @@ namespace WindowsFormsShips
                 return _places[_places.Keys.ToList()[_currentIndex]];
             }
         }
-
 
         object IEnumerator.Current
         {
@@ -192,12 +167,10 @@ namespace WindowsFormsShips
             }
         }
 
-
         public void Dispose()
         {
             _places.Clear();
         }
-
         public bool MoveNext()
         {
             if (_currentIndex + 1 >= _places.Count)
@@ -207,13 +180,10 @@ namespace WindowsFormsShips
             _currentIndex++;
             return true;
         }
-
         public void Reset()
         {
             _currentIndex = -1;
         }
-
-
         public IEnumerator<T> GetEnumerator()
         {
             return this;
@@ -223,7 +193,6 @@ namespace WindowsFormsShips
         {
             return GetEnumerator();
         }
-
         public int CompareTo(Parking<T> other)
         {
             if (_places.Count > other._places.Count) { return -1; }
@@ -257,8 +226,5 @@ namespace WindowsFormsShips
             }
             return 0;
         }
-
-
-
     }
 }

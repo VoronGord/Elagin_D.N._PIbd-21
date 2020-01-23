@@ -23,7 +23,6 @@ namespace WindowsFormsShips
             MainColor = mainColor;
         }
 
-
         /// <summary>         /// Конструктор         /// </summary>  
         /// <param name="info">Информация по объекту</param>        
         public War_Ship(string info)
@@ -79,10 +78,6 @@ namespace WindowsFormsShips
 
             // отрисовка палубы 
             Brush brMain = new SolidBrush(MainColor);
-
-
-
-
             g.FillRectangle(brMain, _startPosX + 3, _startPosY + 5, Lincor_Width - 10, 5);
             g.FillRectangle(brMain, _startPosX, _startPosY, Lincor_Width - 5, 5);
             g.FillRectangle(brMain, _startPosX - 6, _startPosY - 5, Lincor_Width + 6, 5);
@@ -95,10 +90,6 @@ namespace WindowsFormsShips
         {
             return MaxSpeed + ";" + SpeedWater + ";" + MainColor.Name;
         }
-
-
-
-
         public int CompareTo(War_Ship other)
         {
             if (other == null)
@@ -144,9 +135,6 @@ namespace WindowsFormsShips
             }
             return true;
         }
-
-
-
         public override bool Equals(Object obj)
         {
             if (obj == null)
@@ -163,8 +151,6 @@ namespace WindowsFormsShips
                 return Equals(lincorObj);
             }
         }
-
-
         public override int GetHashCode()
         {
             return base.GetHashCode();

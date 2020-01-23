@@ -7,21 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsShips
 {
-    public enum Direction
-    {
-        Up,
-
-        Down,
-
-        Left,
-
-        Right
-    }
     public class Lincor : War_Ship, IComparable<Lincor>, IEquatable<Lincor>
     {
-
         public Color DopColor { private set; get; }
-
 
         public bool Gun { private set; get; }
 
@@ -40,8 +28,6 @@ namespace WindowsFormsShips
             Boat = boat;
         }
 
-
-
         public Lincor(string info) : base(info)
         {
             string[] strs = info.Split(';');
@@ -57,12 +43,10 @@ namespace WindowsFormsShips
             }
         }
 
-
         public override void DrawShip(Graphics g)
         {
             Brush brDop = new SolidBrush(DopColor);
             base.DrawShip(g);
-
             if (Gun)
             {
                 g.FillEllipse(brDop, _startPosX + 70, _startPosY - 20, 10, 20);
@@ -79,15 +63,12 @@ namespace WindowsFormsShips
                 g.FillRectangle(brDop, _startPosX + 50, _startPosY - 2, 10, 4);
                 g.FillRectangle(brDop, _startPosX + 10, _startPosY - 2, 10, 4);
             }
-
         }
-
         public void SetDopColor(Color color)
         {
             DopColor = color;
            
         }
-
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Gun + ";" + Anchor + ";" + Boat;
@@ -116,10 +97,8 @@ namespace WindowsFormsShips
             {
                 return Boat.CompareTo(other.Boat);
             }
-
             return 0;
         }
-
 
         public bool Equals(Lincor other)
         {
@@ -152,7 +131,6 @@ namespace WindowsFormsShips
             return true;
         }
 
-
         public override bool Equals(Object obj)
         {
             if (obj == null) { return false; }
@@ -166,7 +144,6 @@ namespace WindowsFormsShips
                 return Equals(lincorObj);
             }
         }
-
         public override int GetHashCode()
         {
             return base.GetHashCode();

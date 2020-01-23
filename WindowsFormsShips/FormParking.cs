@@ -17,17 +17,12 @@ namespace WindowsFormsShips
         MultiLevelParking parking;
         private Logger logger;
         FormShipConfing form;
-
-
         /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
-
         public FormParking()
         {
             InitializeComponent();
-
             logger = LogManager.GetCurrentClassLogger();
-
 
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
             //заполнение listBox  
@@ -51,10 +46,6 @@ namespace WindowsFormsShips
             }
         }
 
-      
-        
-
-
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
         /// /// </summary>         /// <param name="sender"></param>     
         /// /// <param name="e"></param>      
@@ -66,9 +57,7 @@ namespace WindowsFormsShips
                 {
                     try
                     {
-                        var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
-                  
-                    
+                        var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);                           
                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         ship.SetPosition(5, 35, pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
@@ -86,8 +75,7 @@ namespace WindowsFormsShips
                     {
                         logger.Error(ex.Message, "Неизвестная ошибка");
                         MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                 
+                    }                
                 }
             }
         }
@@ -96,10 +84,7 @@ namespace WindowsFormsShips
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw(); 
-        }
-
-        
-
+        }       
         private void AddShip(IShip ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
@@ -119,9 +104,8 @@ namespace WindowsFormsShips
                 {
                     logger.Error(ex.Message, "Неизвестная ошибка");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            
-            }
+                }           
+           }
         }
 
         private void SetShip_Click(object sender, EventArgs e)
@@ -131,12 +115,8 @@ namespace WindowsFormsShips
             form.Show();
         }
 
-
-
-
         /// <summary>         /// Обработка нажатия пункта меню "Сохранить"         /// </summary>    
         /// /// <param name="sender"></param>         /// <param name="e"></param>   
-
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)

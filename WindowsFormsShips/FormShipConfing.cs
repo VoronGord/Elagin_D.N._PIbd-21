@@ -12,7 +12,6 @@ namespace WindowsFormsShips
 {
     public partial class FormShipConfing : Form
     {
-
         IShip ship = null;
 
         private event shipDelegate eventAddShip;
@@ -33,7 +32,6 @@ namespace WindowsFormsShips
 
         }
 
-
         /// <summary>         /// Добавление события         /// </summary>    
         /// /// <param name="ev"></param>     
         public void AddEvent(shipDelegate ev)
@@ -47,10 +45,6 @@ namespace WindowsFormsShips
                 eventAddShip += ev;
             }
         } 
-
-
-
-
         /// Отправляем цвет с панели         /// </summary>         /// <param name="sender"></param>  
         /// /// <param name="e"></param>      
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
@@ -95,8 +89,6 @@ namespace WindowsFormsShips
             }
         }
 
-
-
         private void DrawShip()
         {
             if (ship != null)
@@ -121,7 +113,6 @@ namespace WindowsFormsShips
         {
             labelWar_Ship.DoDragDrop(labelWar_Ship.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
-
 
         /// <summary>         /// Проверка получаемой информации (ее типа на соответствие требуемому)     
         /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>  
