@@ -13,6 +13,8 @@ namespace WindowsFormsShips
         List<Parking<IShip>> parkingStages;
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
         private const int countPlaces = 20;
+       private const int countPlaces = 20;
+        private const int countPlaces = 20;
         /// <summary>         /// Ширина окна отрисовки         /// </summary>       
         private int pictureWidth; 
         /// <summary>         /// Высота окна отрисовки         /// </summary>  
@@ -31,7 +33,6 @@ namespace WindowsFormsShips
                 parkingStages.Add(new Parking<IShip>(countPlaces, pictureWidth, pictureHeight));
             }
         }
-
         /// <summary>         /// Индексатор         /// </summary>         /// <param name="ind"></param>  
         /// /// <returns></returns>   
         public Parking<IShip> this[int ind]
@@ -90,9 +91,6 @@ namespace WindowsFormsShips
             }
             return true;
         }
-
-       
-
         /// <summary>         /// Загрузка нформации по автомобилям на парковках из файла      
         /// /// </summary>         /// <param name="filename"></param> 
         /// /// <returns></returns>   
@@ -145,6 +143,8 @@ namespace WindowsFormsShips
                 }
                 return true;
             }
+            return true;
+
         }
 
         public void Sort()

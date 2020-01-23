@@ -32,6 +32,7 @@ namespace WindowsFormsShips
             ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxShip.Width, pictureBoxShip.Height);
             Draw();
         }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {//получаем имя кнопкиs
             string name = (sender as Button).Name;
@@ -52,7 +53,6 @@ namespace WindowsFormsShips
             }
             Draw();
         }
-
         private void GenerWarShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();

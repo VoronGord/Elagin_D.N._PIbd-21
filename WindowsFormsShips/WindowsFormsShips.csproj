@@ -61,6 +61,7 @@
     <Compile Include="FormLincor.Designer.cs">
       <DependentUpon>FormLincor.cs</DependentUpon>
     </Compile>
+
     <Compile Include="FormParking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,7 @@
     <EmbeddedResource Include="FormLincor.resx">
       <DependentUpon>FormLincor.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="FormParking.resx">
       <DependentUpon>FormParking.cs</DependentUpon>
     </EmbeddedResource>

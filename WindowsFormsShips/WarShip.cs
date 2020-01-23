@@ -10,7 +10,8 @@ namespace WindowsFormsShips
     public class War_Ship : Ship, IComparable<War_Ship>, IEquatable<War_Ship>
     {         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Width = 100;
-
+        /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
+        protected const int Lincor_Height = 60;
         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Height = 60;
 
@@ -81,7 +82,6 @@ namespace WindowsFormsShips
             g.FillRectangle(brMain, _startPosX + 3, _startPosY + 5, Lincor_Width - 10, 5);
             g.FillRectangle(brMain, _startPosX, _startPosY, Lincor_Width - 5, 5);
             g.FillRectangle(brMain, _startPosX - 6, _startPosY - 5, Lincor_Width + 6, 5);
-
             g.FillRectangle(brMain, _startPosX + 45, _startPosY - 20, 3, 15);
             g.FillRectangle(brMain, _startPosX + 40, _startPosY - 10, 14, 2);
         }

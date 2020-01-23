@@ -23,7 +23,6 @@ namespace WindowsFormsShips
         /// </summary>  
         /// <param name="direction">Направление</param>  
         void MoveTransport(Direction direction);
-
         /// <summary>     
         /// Отрисовка автомобиля  
         /// </summary>
