@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 namespace WindowsFormsShips
 {
     public class Lincor : War_Ship
+=======
+    public class Lincor
     {
         public Color DopColor { private set; get; }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f12cd2e7b4462ca852abb8dfbfbc4a208706060b
         public bool Gun { private set; get; }
-
         public bool Anchor { private set; get; }
-
         public bool Boat { private set; get; }
-
         public Lincor(int maxSpeed, int speedWater, Color mainColor, Color dopColor,
             bool gun, bool anchor, bool boat) :
              base(maxSpeed, speedWater, mainColor)
@@ -26,12 +28,67 @@ namespace WindowsFormsShips
             Anchor = anchor;
             Boat = boat;
         }
-
-
         public override void DrawShip(Graphics g)
         {
             Brush brDop = new SolidBrush(DopColor);
             base.DrawShip(g);
+<<<<<<< HEAD
+=======
+        public void SetPosition(int x, int y, int width, int height)
+        {
+            StartPosX = x;
+            StartPosY = y;
+            PictureWidte = width;
+            PictureHeight = height;
+        }
+        public void MoveTransport(Direction direction)
+        {
+            float step = MaxSpeed;
+            switch (direction)
+            {
+                // вправо
+                case Direction.Right:
+                    if (StartPosX + step < PictureWidte - Lincor_Width)
+                    {
+                        StartPosX += step + SpeedWater;
+                    }
+                    break;//влево
+                case Direction.Left:
+                    if (StartPosX - step > 0)
+                    {
+                        StartPosX -= step - SpeedWater;
+                    }
+                    break;//вверх
+                case Direction.Up:
+                    if (StartPosY - step - 10
+                        > 0 && StartPosX + SpeedWater < PictureWidte - Lincor_Width)
+                    {
+                        StartPosY -= step;
+                        StartPosX += SpeedWater;
+                    }
+                    break;//вниз
+                case Direction.Down:
+                    if (StartPosY + step < PictureHeight - Lincor_Height && StartPosX + SpeedWater < PictureWidte - Lincor_Width)
+                    {
+                        StartPosY += step;
+                        StartPosX += SpeedWater;
+                    }
+                    break;
+            }
+        }
+        public void DrawLincor(Graphics g)
+        {
+            Pen pen = new Pen(Color.Black);
+            // отрисовка палубы 
+            Brush brMain = new SolidBrush(MainColor);
+            Brush brDop = new SolidBrush(DopColor);
+            g.FillRectangle(brMain, StartPosX + 3, StartPosY + 5, Lincor_Width - 10, 5);
+            g.FillRectangle(brMain, StartPosX, StartPosY, Lincor_Width - 5, 5);
+            g.FillRectangle(brMain, StartPosX - 6, StartPosY - 5, Lincor_Width + 6, 5);
+            g.FillRectangle(brMain, StartPosX + 45, StartPosY - 20, 3, 15);
+            g.FillRectangle(brMain, StartPosX + 40, StartPosY - 10, 14, 2);
+
+>>>>>>> f12cd2e7b4462ca852abb8dfbfbc4a208706060b
             if (Gun)
             {
                 g.FillEllipse(brDop, _startPosX + 70, _startPosY - 20, 10, 20);
@@ -48,8 +105,6 @@ namespace WindowsFormsShips
                 g.FillRectangle(brDop, _startPosX + 50, _startPosY - 2, 10, 4);
                 g.FillRectangle(brDop, _startPosX + 10, _startPosY - 2, 10, 4);
             }
-
         }
-
     }
 }
