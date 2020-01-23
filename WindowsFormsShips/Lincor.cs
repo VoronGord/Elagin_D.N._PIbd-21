@@ -8,14 +8,11 @@ using System.Threading.Tasks;
 namespace WindowsFormsShips
 {
     public class Lincor : War_Ship
-=======
+
     public class Lincor
+
     {
         public Color DopColor { private set; get; }
-<<<<<<< HEAD
-
-=======
->>>>>>> f12cd2e7b4462ca852abb8dfbfbc4a208706060b
         public bool Gun { private set; get; }
         public bool Anchor { private set; get; }
         public bool Boat { private set; get; }
@@ -32,8 +29,10 @@ namespace WindowsFormsShips
         {
             Brush brDop = new SolidBrush(DopColor);
             base.DrawShip(g);
-<<<<<<< HEAD
-=======
+        {
+            Brush brDop = new SolidBrush(DopColor);
+            base.DrawShip(g);
+
         public void SetPosition(int x, int y, int width, int height)
         {
             StartPosX = x;
@@ -87,8 +86,6 @@ namespace WindowsFormsShips
             g.FillRectangle(brMain, StartPosX - 6, StartPosY - 5, Lincor_Width + 6, 5);
             g.FillRectangle(brMain, StartPosX + 45, StartPosY - 20, 3, 15);
             g.FillRectangle(brMain, StartPosX + 40, StartPosY - 10, 14, 2);
-
->>>>>>> f12cd2e7b4462ca852abb8dfbfbc4a208706060b
             if (Gun)
             {
                 g.FillEllipse(brDop, _startPosX + 70, _startPosY - 20, 10, 20);

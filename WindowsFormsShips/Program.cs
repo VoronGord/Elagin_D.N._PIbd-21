@@ -16,7 +16,7 @@ namespace WindowsFormsShips
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLincor());
+            Application.Run(new FormParking());
         }
     }
 }

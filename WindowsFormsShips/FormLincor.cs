@@ -14,7 +14,6 @@ namespace WindowsFormsShips
     {
         private IShip ship;
 
-
         public FormLincor()
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace WindowsFormsShips
             ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxShip.Width, pictureBoxShip.Height);
             Draw();
         }
-
 
         private void buttonMove_Click(object sender, EventArgs e)
         {//получаем имя кнопкиs
