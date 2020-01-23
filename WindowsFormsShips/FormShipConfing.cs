@@ -30,7 +30,7 @@ namespace WindowsFormsShips
             buttonCancel.Click += (object sender, EventArgs e) => {   Close(); };
 
         }
-       /// <summary>         /// Добавление события         /// </summary>    
+
         /// <summary>         /// Добавление события         /// </summary>    
         /// /// <param name="ev"></param>     
         public void AddEvent(shipDelegate ev)
@@ -112,6 +112,7 @@ namespace WindowsFormsShips
         {
             labelWar_Ship.DoDragDrop(labelWar_Ship.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
+
         /// <summary>         /// Проверка получаемой информации (ее типа на соответствие требуемому)     
         /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>  
         private void panelShip_DragEnter(object sender, DragEventArgs e)

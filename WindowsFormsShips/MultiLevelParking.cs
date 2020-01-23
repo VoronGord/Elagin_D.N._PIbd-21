@@ -12,13 +12,11 @@ namespace WindowsFormsShips
         /// <summary>         /// Список с уровнями парковки         /// </summary>    
         List<Parking<IShip>> parkingStages;
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
+        private const int countPlaces = 20;
        private const int countPlaces = 20;
         private const int countPlaces = 20;
-
-
         /// <summary>         /// Ширина окна отрисовки         /// </summary>       
         private int pictureWidth; 
-
         /// <summary>         /// Высота окна отрисовки         /// </summary>  
        private int pictureHeight; 
         /// <summary>         /// Конструктор         /// </summary>    
@@ -28,6 +26,8 @@ namespace WindowsFormsShips
         public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
         {
             parkingStages = new List<Parking<IShip>>();
+            this.pictureWidth = pictureWidth;
+            this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
                 parkingStages.Add(new Parking<IShip>(countPlaces, pictureWidth, pictureHeight));
@@ -46,6 +46,7 @@ namespace WindowsFormsShips
                 return null;
             }
         }
+
         /// <summary>         /// Сохранение информации по автомобилям на парковках в файл         /// </summary>    
         /// <param name="filename">Путь и имя файла</param>         /// <returns></returns>   
         public bool SaveData(string filename)
@@ -62,20 +63,20 @@ namespace WindowsFormsShips
                 {
                     //Начинаем уровень
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (IShip ship in level)
                     {
                         try
                         {
-                            var ship = level[i];
+                            
                             if (ship != null)
                             {
                                 if (ship.GetType().Name == "War_Ship")
                                 {
-                                    sw.Write(i + ":War_Ship:");
+                                    sw.Write(level.GetKey + ":War_Ship:");
                                 }
                                 if (ship.GetType().Name == "Lincor")
                                 {
-                                    sw.Write(i + ":Lincor:");
+                                    sw.Write(level.GetKey + ":Lincor:");
                                 }
                                 //Записываемые параметры
                                 sw.WriteLine(ship);
@@ -145,6 +146,11 @@ namespace WindowsFormsShips
             }
             return true;
 
+        }
+
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }  
  }

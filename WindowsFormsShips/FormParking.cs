@@ -18,13 +18,14 @@ namespace WindowsFormsShips
         private Logger logger;
         FormShipConfing form;
         FormShipConfing form;
-     /// <summary>         /// Количество уровней-парковок         /// </summary>   
+
         /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
         public FormParking()
         {
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
+
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
             //заполнение listBox  
             for (int i = 0; i < countLevel; i++)
@@ -46,9 +47,7 @@ namespace WindowsFormsShips
                 pictureBoxParking.Image = bmp;
             }
         }
-        /// <summary>         /// Обработка нажатия кнопки "Припарковать автомобиль"    
-        /// /// </summary>         /// <param name="sender"></param>      
-        /// /// <param name="e"></param>    
+
         private void buttonGenerWarShip_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -101,6 +100,8 @@ namespace WindowsFormsShips
                 {
                     try
                     {
+
+                        var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);                           
                         var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);                   
                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
                         Graphics gr = Graphics.FromImage(bmp);
@@ -119,6 +120,7 @@ namespace WindowsFormsShips
                     {
                         logger.Error(ex.Message, "Неизвестная ошибка");
                         MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                
                     }                 
                 }
             }
@@ -128,8 +130,8 @@ namespace WindowsFormsShips
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw(); 
-        }
-
+        }       
+      }
      private void AddShip(IShip ship)
         private void AddShip(IShip ship)
         {
@@ -150,9 +152,8 @@ namespace WindowsFormsShips
                 {
                     logger.Error(ex.Message, "Неизвестная ошибка");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            
-            }
+                }           
+           }
         }
 
         private void SetShip_Click(object sender, EventArgs e)
@@ -161,9 +162,9 @@ namespace WindowsFormsShips
             form.AddEvent(AddShip);
             form.Show();
         }
+
         /// <summary>         /// Обработка нажатия пункта меню "Сохранить"         /// </summary>    
         /// /// <param name="sender"></param>         /// <param name="e"></param>   
-
         private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -199,6 +200,10 @@ namespace WindowsFormsShips
                     logger.Error(ex.Message, "Занятое место");
                     MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     logger.Error(ex.Message, "Неизвестная ошибка при загрузке");
@@ -206,6 +211,13 @@ namespace WindowsFormsShips
                 }
                 Draw();
             }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }
