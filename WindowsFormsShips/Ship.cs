@@ -22,8 +22,12 @@ namespace WindowsFormsShips
 
         /// <summary>         /// Максимальная скорость         /// </summary>         
         public int MaxSpeed { protected set; get; }
+
         /// <summary>         /// Вес автомобиля         /// </summary>         
         public float SpeedWater { protected set; get; }
+        /// <summary>         /// Вес автомобиля         /// </summary>         
+        public float SpeedWater { protected set; get; }
+
         /// <summary>         /// Основной цвет кузова         /// </summary>         
         public Color MainColor { protected set; get; }
 
@@ -34,6 +38,7 @@ namespace WindowsFormsShips
             _pictureWidte = width;
             _pictureHeight = height;
         }
+
         public abstract void DrawShip(Graphics g);
 
         public abstract void MoveTransport(Direction direction);
