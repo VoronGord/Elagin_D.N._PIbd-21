@@ -14,7 +14,6 @@ namespace WindowsFormsShips
     {
         private IShip ship;
 
-
         public FormLincor()
         {
             InitializeComponent();

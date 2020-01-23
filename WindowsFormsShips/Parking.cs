@@ -11,24 +11,18 @@ namespace WindowsFormsShips
     {
         /// <summary>         /// Массив объектов, которые храним         /// </summary>    
         private Dictionary<int, T> _places; 
-
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
-
         /// <summary>         /// Массив объектов, которые храним         /// </summary>         
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
-
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
-
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
         private const int _placeSizeWidth = 210;
-
-        /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
+       /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
         private const int _placeSizeHeight = 80;
-
-        /// <summary>         /// Конструктор         /// </summary>         /// <param name="sizes">Количество мест на парковке</param>   
+       /// <summary>         /// Конструктор         /// </summary>         /// <param name="sizes">Количество мест на парковке</param>   
         /// <param name="pictureWidth">Рамзер парковки - ширина</param>    
         /// <param name="pictureHeight">Рамзер парковки - высота</param>        
         public Parking(int sizes, int pictureWidth, int pictureHeight)
@@ -38,7 +32,6 @@ namespace WindowsFormsShips
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-
         /// <summary>         /// Перегрузка оператора сложения         /// Логика действия: на парковку добавляется автомобиль   
         /// </summary>         /// <param name="p">Парковка</param>     
         /// <param name="ship">Добавляемый автомобиль</param>         /// <returns></returns>   
@@ -59,7 +52,6 @@ namespace WindowsFormsShips
             }
             return -1;
         }
-
         /// <summary>         /// Перегрузка оператора вычитания    
         /// Логика действия: с парковки забираем автомобиль 
         /// </summary>         /// <param name="p">Парковка</param>    
@@ -111,7 +103,7 @@ namespace WindowsFormsShips
                         i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400); 
-        }
+            }
         }
     }
 }
