@@ -22,8 +22,6 @@ namespace WindowsFormsShips
         /// <summary>         /// Высота окна отрисовки         /// </summary>  
        private int pictureHeight; 
 
-
-
         /// <summary>         /// Конструктор         /// </summary>    
         /// /// <param name="countStages">Количество уровенй парковки</param>   
         /// /// <param name="pictureWidth"></param>  
@@ -50,11 +48,8 @@ namespace WindowsFormsShips
                 return null;
             }
         }
-
-
         /// <summary>         /// Сохранение информации по автомобилям на парковках в файл         /// </summary>    
         /// <param name="filename">Путь и имя файла</param>         /// <returns></returns>   
-
         public bool SaveData(string filename)
         {
             if (File.Exists(filename))
@@ -92,7 +87,6 @@ namespace WindowsFormsShips
                 return true;
             }
         }
-
         /// <summary>         /// Метод записи информации в файл         /// </summary>  
         /// /// <param name="text">Строка, которую следует записать</param>    
         /// /// <param name="stream">Поток для записи</param>   
@@ -101,7 +95,6 @@ namespace WindowsFormsShips
             byte[] info = new UTF8Encoding(true).GetBytes(text);
             stream.Write(info, 0, info.Length);
         }
-
         /// <summary>         /// Загрузка нформации по автомобилям на парковках из файла      
         /// /// </summary>         /// <param name="filename"></param> 
         /// /// <returns></returns>   
@@ -158,7 +151,6 @@ namespace WindowsFormsShips
                     }
                 }
             }
-
             return true;
         }
     }

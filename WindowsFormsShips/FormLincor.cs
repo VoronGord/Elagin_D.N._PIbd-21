@@ -14,7 +14,6 @@ namespace WindowsFormsShips
     {
         private IShip ship;
 
-
         public FormLincor()
         {
             InitializeComponent();
@@ -36,7 +35,6 @@ namespace WindowsFormsShips
             Draw();
         }
 
-
         private void buttonMove_Click(object sender, EventArgs e)
         {//получаем имя кнопкиs
             string name = (sender as Button).Name;
@@ -57,7 +55,6 @@ namespace WindowsFormsShips
             }
             Draw();
         }
-
         private void GenerWarShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();

@@ -6,17 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WindowsFormsShips
-{
-    public enum Direction
-    {
-        Up,
-
-        Down,
-
-        Left,
-
-        Right
-    }
+{   
     public class Lincor : War_Ship
     {
 
@@ -56,8 +46,6 @@ namespace WindowsFormsShips
                 Boat = Convert.ToBoolean(strs[6]);
             }
         }
-
-
         public override void DrawShip(Graphics g)
         {
             Brush brDop = new SolidBrush(DopColor);
@@ -79,7 +67,6 @@ namespace WindowsFormsShips
                 g.FillRectangle(brDop, _startPosX + 50, _startPosY - 2, 10, 4);
                 g.FillRectangle(brDop, _startPosX + 10, _startPosY - 2, 10, 4);
             }
-
         }
 
         public void SetDopColor(Color color)
