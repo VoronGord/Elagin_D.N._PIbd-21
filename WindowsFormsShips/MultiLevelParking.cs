@@ -91,14 +91,7 @@ namespace WindowsFormsShips
             return true;
         }
 
-        /// <summary>         /// Метод записи информации в файл         /// </summary>  
-        /// /// <param name="text">Строка, которую следует записать</param>    
-        /// /// <param name="stream">Поток для записи</param>   
-        private void WriteToFile(string text, FileStream stream)
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
-        }
+       
 
         /// <summary>         /// Загрузка нформации по автомобилям на парковках из файла      
         /// /// </summary>         /// <param name="filename"></param> 
