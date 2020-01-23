@@ -31,6 +31,7 @@ namespace WindowsFormsShips
 
         }
        /// <summary>         /// Добавление события         /// </summary>    
+        /// <summary>         /// Добавление события         /// </summary>    
         /// /// <param name="ev"></param>     
         public void AddEvent(shipDelegate ev)
         {
@@ -50,7 +51,6 @@ namespace WindowsFormsShips
         {
             (sender as Control).DoDragDrop((sender as Control).BackColor, DragDropEffects.Move | DragDropEffects.Copy);
         } 
-
         /// <summary>         /// Проверка получаемой информации (ее типа на соответствие требуемому)   
         /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>     
         private void labelMainColor_DragEnter(object sender, DragEventArgs e)
@@ -112,7 +112,6 @@ namespace WindowsFormsShips
         {
             labelWar_Ship.DoDragDrop(labelWar_Ship.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
-
         /// <summary>         /// Проверка получаемой информации (ее типа на соответствие требуемому)     
         /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>  
         private void panelShip_DragEnter(object sender, DragEventArgs e)

@@ -11,20 +11,21 @@ namespace WindowsFormsShips
     {
         /// <summary>         /// Массив объектов, которые храним         /// </summary>    
         private Dictionary<int, T> _places; 
-
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
-       /// <summary>         /// Массив объектов, которые храним         /// </summary>           
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
+
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
         private const int _placeSizeWidth = 210;
         /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
+        /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
+        private const int _placeSizeWidth = 210;
+       /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
         private const int _placeSizeHeight = 80;
-
-        /// <summary>         /// Конструктор         /// </summary>         /// <param name="sizes">Количество мест на парковке</param>   
+       /// <summary>         /// Конструктор         /// </summary>         /// <param name="sizes">Количество мест на парковке</param>   
         /// <param name="pictureWidth">Рамзер парковки - ширина</param>    
         /// <param name="pictureHeight">Рамзер парковки - высота</param>        
         public Parking(int sizes, int pictureWidth, int pictureHeight)
@@ -76,7 +77,6 @@ namespace WindowsFormsShips
         {
             return !_places.ContainsKey(index);
         }
-    /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   
         /// <param name="g"></param>   
@@ -130,6 +130,10 @@ namespace WindowsFormsShips
                     throw new ParkingOccupiedPlaceException(ind);
                 }
             }
+                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+
+                 }
+             }
         }
     }
 }

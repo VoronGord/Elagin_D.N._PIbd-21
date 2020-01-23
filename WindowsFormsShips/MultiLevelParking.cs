@@ -13,6 +13,8 @@ namespace WindowsFormsShips
         List<Parking<IShip>> parkingStages;
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
        private const int countPlaces = 20;
+        private const int countPlaces = 20;
+
 
         /// <summary>         /// Ширина окна отрисовки         /// </summary>       
         private int pictureWidth; 
@@ -148,6 +150,8 @@ namespace WindowsFormsShips
                 }
                 return true;
             }
+            return true;
+
         }
     }  
  }

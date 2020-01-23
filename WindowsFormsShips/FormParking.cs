@@ -17,7 +17,8 @@ namespace WindowsFormsShips
         MultiLevelParking parking;
         private Logger logger;
         FormShipConfing form;
-
+        FormShipConfing form;
+     /// <summary>         /// Количество уровней-парковок         /// </summary>   
         /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
         public FormParking()
@@ -45,7 +46,50 @@ namespace WindowsFormsShips
                 pictureBoxParking.Image = bmp;
             }
         }
-
+        /// <summary>         /// Обработка нажатия кнопки "Припарковать автомобиль"    
+        /// /// </summary>         /// <param name="sender"></param>      
+        /// /// <param name="e"></param>    
+        private void buttonGenerWarShip_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var ship = new War_Ship(100, 1000, dialog.Color);
+                    int place = parking[listBoxLevels.SelectedIndex] + ship;
+                    if (place == -1)
+                    {
+                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    Draw();
+                }
+            }
+        }
+        /// <summary>         /// Обработка нажатия кнопки "Припарковать гоночный автомобиль" 
+        /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>    
+        private void buttonGenerLincor_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var ship = new Lincor(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                        int place = parking[listBoxLevels.SelectedIndex] + ship;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
+                }
+            }
+        }
+      } 
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
         /// /// </summary>         /// <param name="sender"></param>     
         /// /// <param name="e"></param>      
@@ -57,9 +101,7 @@ namespace WindowsFormsShips
                 {
                     try
                     {
-                        var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
-                  
-                    
+                        var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);                   
                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         ship.SetPosition(5, 35, pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
@@ -77,8 +119,7 @@ namespace WindowsFormsShips
                     {
                         logger.Error(ex.Message, "Неизвестная ошибка");
                         MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                 
+                    }                 
                 }
             }
         }
@@ -88,7 +129,9 @@ namespace WindowsFormsShips
         {
             Draw(); 
         }
+
      private void AddShip(IShip ship)
+        private void AddShip(IShip ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
             {
