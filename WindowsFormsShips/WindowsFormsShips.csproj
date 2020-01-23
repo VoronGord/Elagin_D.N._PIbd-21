@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="IShip.cs" />
     <Compile Include="Lincor.cs" />
+    <Compile Include="MultiLevelParking.cs" />
     <Compile Include="Parking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

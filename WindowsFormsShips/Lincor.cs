@@ -10,7 +10,6 @@ namespace WindowsFormsShips
     public class Lincor : War_Ship
 
     public class Lincor
-
     {
         public Color DopColor { private set; get; }
         public bool Gun { private set; get; }

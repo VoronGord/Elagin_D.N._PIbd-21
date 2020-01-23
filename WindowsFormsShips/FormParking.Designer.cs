@@ -36,6 +36,7 @@
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelPlace = new System.Windows.Forms.Label();
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.groupBoxTaleShip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeShip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
@@ -53,9 +54,9 @@
             // 
             // buttonSetLincor
             // 
-            this.buttonSetLincor.Location = new System.Drawing.Point(1098, 26);
+            this.buttonSetLincor.Location = new System.Drawing.Point(1098, 215);
             this.buttonSetLincor.Name = "buttonSetLincor";
-            this.buttonSetLincor.Size = new System.Drawing.Size(142, 45);
+            this.buttonSetLincor.Size = new System.Drawing.Size(142, 36);
             this.buttonSetLincor.TabIndex = 3;
             this.buttonSetLincor.Text = "SetLincor";
             this.buttonSetLincor.UseVisualStyleBackColor = true;
@@ -63,9 +64,9 @@
             // 
             // buttonSetWarShip
             // 
-            this.buttonSetWarShip.Location = new System.Drawing.Point(1098, 77);
+            this.buttonSetWarShip.Location = new System.Drawing.Point(1098, 257);
             this.buttonSetWarShip.Name = "buttonSetWarShip";
-            this.buttonSetWarShip.Size = new System.Drawing.Size(142, 45);
+            this.buttonSetWarShip.Size = new System.Drawing.Size(142, 38);
             this.buttonSetWarShip.TabIndex = 7;
             this.buttonSetWarShip.Text = "SetWarShip";
             this.buttonSetWarShip.UseVisualStyleBackColor = true;
@@ -116,11 +117,22 @@
             this.pictureBoxParking.TabIndex = 9;
             this.pictureBoxParking.TabStop = false;
             // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(1085, 44);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(168, 148);
+            this.listBoxLevels.TabIndex = 10;
+            this.listBoxLevels.Click += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1297, 594);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.pictureBoxParking);
             this.Controls.Add(this.groupBoxTaleShip);
             this.Controls.Add(this.buttonSetWarShip);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.PictureBox pictureBoxParking;
         private System.Windows.Forms.PictureBox pictureBoxTakeShip;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
