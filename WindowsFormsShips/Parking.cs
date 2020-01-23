@@ -32,7 +32,6 @@ namespace WindowsFormsShips
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-
         /// <summary>         /// Перегрузка оператора сложения         /// Логика действия: на парковку добавляется автомобиль   
         /// </summary>         /// <param name="p">Парковка</param>     
         /// <param name="ship">Добавляемый автомобиль</param>         /// <returns></returns>   
@@ -53,7 +52,6 @@ namespace WindowsFormsShips
             }
             return -1;
         }
-
         /// <summary>         /// Перегрузка оператора вычитания    
         /// Логика действия: с парковки забираем автомобиль 
         /// </summary>         /// <param name="p">Парковка</param>    
