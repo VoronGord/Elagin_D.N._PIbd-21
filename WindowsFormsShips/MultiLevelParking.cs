@@ -90,8 +90,7 @@ namespace WindowsFormsShips
             }
             return true;
         }
-       
-        
+
         /// <summary>         /// Загрузка нформации по автомобилям на парковках из файла      
         /// /// </summary>         /// <param name="filename"></param> 
         /// /// <returns></returns>   
