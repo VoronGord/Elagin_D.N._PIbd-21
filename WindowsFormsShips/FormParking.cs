@@ -14,9 +14,10 @@ namespace WindowsFormsShips
     {
         /// <summary>         /// Объект от класса многоуровневой парковки         /// </summary>  
         MultiLevelParking parking;
-
+ 
         FormShipConfing form;
      /// <summary>         /// Количество уровней-парковок         /// </summary>   
+        /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
 
         public FormParking()
@@ -43,7 +44,51 @@ namespace WindowsFormsShips
                 pictureBoxParking.Image = bmp;
             }
         }
+        /// <summary>         /// Обработка нажатия кнопки "Припарковать автомобиль"    
+        /// /// </summary>         /// <param name="sender"></param>      
+        /// /// <param name="e"></param>    
+        private void buttonGenerWarShip_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var ship = new War_Ship(100, 1000, dialog.Color);
+                    int place = parking[listBoxLevels.SelectedIndex] + ship;
+                    if (place == -1)
+                    {
+                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    Draw();
+                }
+            }
+        }
+        /// <summary>         /// Обработка нажатия кнопки "Припарковать гоночный автомобиль" 
+        /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>    
+        private void buttonGenerLincor_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var ship = new Lincor(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                        int place = parking[listBoxLevels.SelectedIndex] + ship;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
+                }
+            }
 
+        }
+      } 
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
         /// /// </summary>         /// <param name="sender"></param>     
         /// /// <param name="e"></param>      
@@ -76,7 +121,6 @@ namespace WindowsFormsShips
         {
             Draw(); 
         }
-       
         private void AddShip(IShip ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)

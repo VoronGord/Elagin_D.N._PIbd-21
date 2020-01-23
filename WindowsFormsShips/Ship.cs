@@ -25,6 +25,8 @@ namespace WindowsFormsShips
 
         /// <summary>         /// Вес автомобиля         /// </summary>         
         public float SpeedWater { protected set; get; }
+        /// <summary>         /// Вес автомобиля         /// </summary>         
+        public float SpeedWater { protected set; get; }
 
         /// <summary>         /// Основной цвет кузова         /// </summary>         
         public Color MainColor { protected set; get; }

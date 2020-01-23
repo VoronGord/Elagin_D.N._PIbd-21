@@ -14,6 +14,9 @@ namespace WindowsFormsShips
         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Height = 60;
 
+        /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
+        protected const int Lincor_Height = 60;
+
         /// <summary>         /// Конструктор         /// </summary>         /// <param name="maxSpeed">Максимальная скорость</param>   
         /// /// <param name="weight">Вес автомобиля</param>         /// <param name="mainColor">Основной цвет кузова</param>         
         public War_Ship(int maxSpeed, int speedWater, Color mainColor)
@@ -22,7 +25,6 @@ namespace WindowsFormsShips
             SpeedWater = speedWater;
             MainColor = mainColor;
         }
-
         /// <summary>         /// Конструктор         /// </summary>  
         /// <param name="info">Информация по объекту</param>        
         public War_Ship(string info)
