@@ -7,21 +7,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsShips
 {
-    public enum Direction
-    {
-        Up,
-
-        Down,
-
-        Left,
-
-        Right
-    }
     public class Lincor : War_Ship
     {
 
         public Color DopColor { private set; get; }
-
 
         public bool Gun { private set; get; }
 
@@ -33,13 +22,11 @@ namespace WindowsFormsShips
             bool gun, bool anchor, bool boat) :
              base(maxSpeed, speedWater, mainColor)
         {
-
             DopColor = dopColor;
             Gun = gun;
             Anchor = anchor;
             Boat = boat;
         }
-
 
         public override void DrawShip(Graphics g)
         {
@@ -62,8 +49,6 @@ namespace WindowsFormsShips
                 g.FillRectangle(brDop, _startPosX + 50, _startPosY - 2, 10, 4);
                 g.FillRectangle(brDop, _startPosX + 10, _startPosY - 2, 10, 4);
             }
-
         }
-
     }
 }

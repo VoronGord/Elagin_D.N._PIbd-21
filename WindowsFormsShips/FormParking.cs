@@ -42,7 +42,6 @@ namespace WindowsFormsShips
                 pictureBoxParking.Image = bmp;
             }
         }
-
         /// <summary>         /// Обработка нажатия кнопки "Припарковать автомобиль"    
         /// /// </summary>         /// <param name="sender"></param>      
         /// /// <param name="e"></param>    
@@ -86,7 +85,6 @@ namespace WindowsFormsShips
                 }
             }
         }
-
 
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
         /// /// </summary>         /// <param name="sender"></param>     

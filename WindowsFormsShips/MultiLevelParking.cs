@@ -12,7 +12,6 @@ namespace WindowsFormsShips
         List<Parking<IShip>> parkingStages; 
  
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
-
         private const int countPlaces = 20;
 
         /// <summary>         /// Конструктор         /// </summary>    
