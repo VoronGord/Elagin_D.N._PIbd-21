@@ -18,7 +18,6 @@ namespace WindowsFormsShips
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
 
-
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
 
         private const int _placeSizeWidth = 210;
@@ -39,7 +38,6 @@ namespace WindowsFormsShips
                 _places[i] = null;
             }
         }
-
         /// <summary>         /// Перегрузка оператора сложения         /// Логика действия: на парковку добавляется автомобиль   
         /// </summary>         /// <param name="p">Парковка</param>     
         /// <param name="car">Добавляемый автомобиль</param>         /// <returns></returns>   
@@ -57,7 +55,6 @@ namespace WindowsFormsShips
             }
             return -1;
         }
-
         /// <summary>         /// Перегрузка оператора вычитания    
         /// Логика действия: с парковки забираем автомобиль 
         /// </summary>         /// <param name="p">Парковка</param>    

@@ -60,7 +60,6 @@ namespace WindowsFormsShips
             }
         } 
  
-
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
         /// /// </summary>         /// <param name="sender"></param>     
         /// /// <param name="e"></param>      
