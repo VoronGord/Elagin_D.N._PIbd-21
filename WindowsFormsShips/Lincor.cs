@@ -29,7 +29,7 @@ namespace WindowsFormsShips
         public Lincor(string info) : base(info)
         {
             string[] strs = info.Split(';');
-            if (strs.Length == 8)
+            if (strs.Length == 7)
             {
                 MaxSpeed = Convert.ToInt32(strs[0]);
                 SpeedWater = Convert.ToInt32(strs[1]);

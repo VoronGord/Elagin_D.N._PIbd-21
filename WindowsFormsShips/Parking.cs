@@ -13,12 +13,14 @@ namespace WindowsFormsShips
         private Dictionary<int, T> _places; 
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
-
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
 
+        /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
+        private const int _placeSizeWidth = 210;
+        /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
         private const int _placeSizeWidth = 210;
        /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
@@ -40,7 +42,7 @@ namespace WindowsFormsShips
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -66,9 +68,8 @@ namespace WindowsFormsShips
                 p._places.Remove(index);
                 return ship;
             }
-            return null;
+            throw new ParkingNotFoundException(index);
         }
-
         /// <summary>     
         /// Метод проверки заполнености парковочного места (ячейки массива)         /// </summary>    
         /// <param name="index">Номер парковочного места (порядковый номер в массиве)</param>         /// <returns></returns>  
@@ -76,8 +77,6 @@ namespace WindowsFormsShips
         {
             return !_places.ContainsKey(index);
         }
-
-        /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   
         /// <param name="g"></param>   
@@ -107,7 +106,6 @@ namespace WindowsFormsShips
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400); 
             }
         }
-
         /// <summary>         /// Индексатор         /// </summary>      
         /// /// <param name="ind"></param>         /// <returns></returns>     
         public T this[int ind]
@@ -118,14 +116,20 @@ namespace WindowsFormsShips
                 {
                     return _places[ind];
                 }
-                return null;
-            } 
-
-             set
-             {
+                throw new ParkingNotFoundException(ind);
+            }
+            set
+            {
                 if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
+                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 35, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new ParkingOccupiedPlaceException(ind);
+                }
+            }
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
 
                  }

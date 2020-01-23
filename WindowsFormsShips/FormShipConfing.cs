@@ -12,9 +12,7 @@ namespace WindowsFormsShips
 {
     public partial class FormShipConfing : Form
     {
-
         IShip ship = null;
-
         private event shipDelegate eventAddShip;
 
         public FormShipConfing()
@@ -32,7 +30,7 @@ namespace WindowsFormsShips
             buttonCancel.Click += (object sender, EventArgs e) => {   Close(); };
 
         }
-
+       /// <summary>         /// Добавление события         /// </summary>    
         /// <summary>         /// Добавление события         /// </summary>    
         /// /// <param name="ev"></param>     
         public void AddEvent(shipDelegate ev)

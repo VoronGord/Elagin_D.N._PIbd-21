@@ -18,7 +18,6 @@ namespace WindowsFormsShips
         {
             InitializeComponent();
         }
-
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxShip.Width, pictureBoxShip.Height);
@@ -26,7 +25,6 @@ namespace WindowsFormsShips
             ship.DrawShip(gr);
             pictureBoxShip.Image = bmp;
         }
-
         private void GenerLincor_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();

@@ -11,16 +11,16 @@ namespace WindowsFormsShips
     {
         /// <summary>         /// Список с уровнями парковки         /// </summary>    
         List<Parking<IShip>> parkingStages;
-
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
+       private const int countPlaces = 20;
         private const int countPlaces = 20;
+
 
         /// <summary>         /// Ширина окна отрисовки         /// </summary>       
         private int pictureWidth; 
 
         /// <summary>         /// Высота окна отрисовки         /// </summary>  
        private int pictureHeight; 
-
         /// <summary>         /// Конструктор         /// </summary>    
         /// /// <param name="countStages">Количество уровенй парковки</param>   
         /// /// <param name="pictureWidth"></param>  
@@ -33,7 +33,6 @@ namespace WindowsFormsShips
                 parkingStages.Add(new Parking<IShip>(countPlaces, pictureWidth, pictureHeight));
             }
         }
-
         /// <summary>         /// Индексатор         /// </summary>         /// <param name="ind"></param>  
         /// /// <returns></returns>   
         public Parking<IShip> this[int ind]
@@ -55,38 +54,43 @@ namespace WindowsFormsShips
             {
                 File.Delete(filename);
             }
-            using (StreamWriter fs = new StreamWriter(filename))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 //Записываем количество уровней
-                fs.WriteLine("CountLevels:" + parkingStages.Count);
+                sw.WriteLine("CountLevels:" + parkingStages.Count);
                 foreach (var level in parkingStages)
                 {
                     //Начинаем уровень
-                    fs.WriteLine("Level");
+                    sw.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var plane = level[i];
-                        if (plane != null)
+                        try
                         {
-                            //если место не пустое
-                            //Записываем тип мшаины
-                            if (plane.GetType().Name == "War_Ship")
+                            var ship = level[i];
+                            if (ship != null)
                             {
-                                fs.Write("e:" + i + ":War_Ship:");
+                                if (ship.GetType().Name == "War_Ship")
+                                {
+                                    sw.Write(i + ":War_Ship:");
+                                }
+                                if (ship.GetType().Name == "Lincor")
+                                {
+                                    sw.Write(i + ":Lincor:");
+                                }
+                                //Записываемые параметры
+                                sw.WriteLine(ship);
                             }
-                            if (plane.GetType().Name == "Lincor")
-                            {
-                                fs.Write("e:" + i + ":Lincor:");
-                            }
-                            //Записываемые параметры
-                            fs.Write(plane + Environment.NewLine);
+                            //Записываем тип машины
+
                         }
+                        catch { }
+                       
                     }
                 }
-                return true;
             }
+            return true;
         }
-     
+
         /// <summary>         /// Загрузка нформации по автомобилям на парковках из файла      
         /// /// </summary>         /// <param name="filename"></param> 
         /// /// <returns></returns>   
@@ -96,56 +100,53 @@ namespace WindowsFormsShips
             {
                 return false;
             }
-            string bufferTextFromFile = "";
-            int counter = -1;
-            using (StreamReader fs = new StreamReader(filename))
+            string buffer = "";
+            using (StreamReader sr = new StreamReader(filename))
             {
-
-                while (bufferTextFromFile != null)
+                if ((buffer = sr.ReadLine()).Contains("CountLevels"))
                 {
-                    bufferTextFromFile = fs.ReadLine();
-                    if (bufferTextFromFile == null)
+                    int count = Convert.ToInt32(buffer.Split(':')[1]);
+                    if (parkingStages!= null)
                     {
-                        break;
+                        parkingStages.Clear();
                     }
-
-                    IShip ship = null;
-                    int count = 0;
-                    var strs = bufferTextFromFile.Split(':');
-                    switch (strs[0])
-                    {
-
-                        case "CountLeveles":
-                            count = Convert.ToInt32(strs[1]);
-                            if (parkingStages != null)
-                            {
-                                parkingStages.Clear();
-                            }
-                            parkingStages = new List<Parking<IShip>>(count);
-                            break;
-                        case "Level":
-                            counter++;
-
-                            break;
-                        case "e":
-
-                            if (strs[2] == "War_Ship")
-                            {
-                                ship = new War_Ship(strs[3]);
-                            }
-                            else if (strs[2] == "Lincor")
-                            {
-                                ship = new Lincor(strs[3]);
-                            }
-                            parkingStages[counter][Convert.ToInt32(strs[1])] = ship;
-
-                            break;
-                    }
+                    parkingStages= new List<Parking<IShip>>(count);
                 }
+                else
+                {
+                    //если нет такой записи, то это не те данные   
+                    throw new Exception("Неверный формат файла");
+                }   
+                
+                int counter = -1;
+                IShip ship = null;
+                while ((buffer = sr.ReadLine()) != null)
+                {
+                    if (buffer == "Level")
+                    {
+                        counter++;
+                        parkingStages.Add(new Parking<IShip>(countPlaces,
+                            pictureWidth, pictureHeight));
+                        continue;
+                    }
+                    if (string.IsNullOrEmpty(buffer)) continue;
+                    if (buffer.Split(':')[1] == "War_Ship")
+                    {
+                        Console.WriteLine(buffer.Split(':')[2]);
+                        ship = new War_Ship(buffer.Split(':')[2]);
+                    }
+                    else if (buffer.Split(':')[1] == "Lincor")
+                    {
+                        ship = new Lincor(buffer.Split(':')[2]);
+                    }
+                    parkingStages[counter][Convert.ToInt32(buffer.Split(':')[0])] = ship;
+                }
+                return true;
             }
             return true;
+
         }
-    }
-}
+    }  
+ }
 
 

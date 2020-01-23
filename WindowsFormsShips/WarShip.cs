@@ -10,10 +10,8 @@ namespace WindowsFormsShips
     public class War_Ship : Ship
     {         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Width = 100;
-
         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Height = 60;
-
         /// <summary>         /// Ширина отрисовки автомобиля         /// </summary>         
         protected const int Lincor_Height = 60;
 
