@@ -55,7 +55,6 @@ namespace WindowsFormsShips
             }
             Draw();
         }
-
         private void GenerWarShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();

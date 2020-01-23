@@ -16,7 +16,7 @@ namespace WindowsFormsShips
         MultiLevelParking parking;
  
         FormShipConfing form;
-    
+     /// <summary>         /// Количество уровней-парковок         /// </summary>   
         /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
 
@@ -98,13 +98,13 @@ namespace WindowsFormsShips
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var car = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
-                    if (car != null)
+                    var ship = parking[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
+                    if (ship != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        car.SetPosition(5, 35, pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
-                        car.DrawShip(gr); pictureBoxTakeShip.Image = bmp;
+                        ship.SetPosition(5, 35, pictureBoxTakeShip.Width, pictureBoxTakeShip.Height);
+                        ship.DrawShip(gr); pictureBoxTakeShip.Image = bmp;
                     }
                     else
                     {
@@ -121,7 +121,6 @@ namespace WindowsFormsShips
         {
             Draw(); 
         }
-    
         private void AddShip(IShip ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
@@ -143,6 +142,38 @@ namespace WindowsFormsShips
             form = new FormShipConfing();
             form.AddEvent(AddShip);
             form.Show();
+        }
+
+        /// <summary>         /// Обработка нажатия пункта меню "Сохранить"         /// </summary>    
+        /// /// <param name="sender"></param>         /// <param name="e"></param>   
+
+        private void СохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else { MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>         /// Обработка нажатия пункта меню "Загрузить"         /// </summary>      
+        /// <param name="sender"></param>         /// <param name="e"></param>   
+        private void ЗагрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (parking.LoadData(openFileDialog.FileName))
+                {
+
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else { MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                Draw();
+            }
         }
     }
 }

@@ -25,7 +25,19 @@ namespace WindowsFormsShips
             SpeedWater = speedWater;
             MainColor = mainColor;
         }
-        
+        /// <summary>         /// Конструктор         /// </summary>  
+        /// <param name="info">Информация по объекту</param>        
+        public War_Ship(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                SpeedWater = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        } 
+
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed;
@@ -73,6 +85,11 @@ namespace WindowsFormsShips
             g.FillRectangle(brMain, _startPosX - 6, _startPosY - 5, Lincor_Width + 6, 5);
             g.FillRectangle(brMain, _startPosX + 45, _startPosY - 20, 3, 15);
             g.FillRectangle(brMain, _startPosX + 40, _startPosY - 10, 14, 2);
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + SpeedWater + ";" + MainColor.Name;
         }
     }
 }

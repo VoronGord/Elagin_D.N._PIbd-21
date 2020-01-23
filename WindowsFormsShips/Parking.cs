@@ -13,11 +13,12 @@ namespace WindowsFormsShips
         private Dictionary<int, T> _places; 
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
-        /// <summary>         /// Массив объектов, которые храним         /// </summary>         
+
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
+
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
         private const int _placeSizeWidth = 210;
        /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
@@ -75,6 +76,7 @@ namespace WindowsFormsShips
         {
             return !_places.ContainsKey(index);
         }
+
         /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   
@@ -104,6 +106,30 @@ namespace WindowsFormsShips
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400); 
             }
+        }
+
+        /// <summary>         /// Индексатор         /// </summary>      
+        /// /// <param name="ind"></param>         /// <returns></returns>     
+        public T this[int ind]
+        {
+            get
+            {
+                if (_places.ContainsKey(ind))
+                {
+                    return _places[ind];
+                }
+                return null;
+            } 
+
+             set
+             {
+                if (CheckFreePlace(ind))
+                {
+                    _places.Add(ind, value);
+                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 15, PictureWidth, PictureHeight);
+
+                 }
+             }
         }
     }
 }
