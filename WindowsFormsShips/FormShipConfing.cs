@@ -12,9 +12,7 @@ namespace WindowsFormsShips
 {
     public partial class FormShipConfing : Form
     {
-
         IShip ship = null;
-
         private event shipDelegate eventAddShip;
 
         public FormShipConfing()
@@ -32,9 +30,7 @@ namespace WindowsFormsShips
             buttonCancel.Click += (object sender, EventArgs e) => {   Close(); };
 
         }
-
-
-        /// <summary>         /// Добавление события         /// </summary>    
+       /// <summary>         /// Добавление события         /// </summary>    
         /// /// <param name="ev"></param>     
         public void AddEvent(shipDelegate ev)
         {
@@ -47,9 +43,6 @@ namespace WindowsFormsShips
                 eventAddShip += ev;
             }
         } 
-
-
-
 
         /// Отправляем цвет с панели         /// </summary>         /// <param name="sender"></param>  
         /// /// <param name="e"></param>      
@@ -95,8 +88,6 @@ namespace WindowsFormsShips
             }
         }
 
-
-
         private void DrawShip()
         {
             if (ship != null)
@@ -121,7 +112,6 @@ namespace WindowsFormsShips
         {
             labelWar_Ship.DoDragDrop(labelWar_Ship.Text, DragDropEffects.Move | DragDropEffects.Copy);
         }
-
 
         /// <summary>         /// Проверка получаемой информации (ее типа на соответствие требуемому)     
         /// /// </summary>         /// <param name="sender"></param>         /// <param name="e"></param>  

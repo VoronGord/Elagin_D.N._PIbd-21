@@ -18,17 +18,12 @@ namespace WindowsFormsShips
         private Logger logger;
         FormShipConfing form;
 
-
         /// <summary>         /// Количество уровней-парковок         /// </summary>   
         private const int countLevel = 5;
-
         public FormParking()
         {
             InitializeComponent();
-
             logger = LogManager.GetCurrentClassLogger();
-
-
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
             //заполнение listBox  
             for (int i = 0; i < countLevel; i++)
@@ -50,10 +45,6 @@ namespace WindowsFormsShips
                 pictureBoxParking.Image = bmp;
             }
         }
-
-      
-        
-
 
         /// <summary>         /// Обработка нажатия кнопки "Забрать"    
         /// /// </summary>         /// <param name="sender"></param>     
@@ -97,10 +88,7 @@ namespace WindowsFormsShips
         {
             Draw(); 
         }
-
-        
-
-        private void AddShip(IShip ship)
+     private void AddShip(IShip ship)
         {
             if (ship != null && listBoxLevels.SelectedIndex > -1)
             {
@@ -130,10 +118,6 @@ namespace WindowsFormsShips
             form.AddEvent(AddShip);
             form.Show();
         }
-
-
-
-
         /// <summary>         /// Обработка нажатия пункта меню "Сохранить"         /// </summary>    
         /// /// <param name="sender"></param>         /// <param name="e"></param>   
 

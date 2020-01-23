@@ -14,22 +14,13 @@ namespace WindowsFormsShips
 
         /// <summary>         /// Максимальное количество мест на парковке         /// </summary>   
         private int _maxCount; 
-
-
-        /// <summary>         /// Массив объектов, которые храним         /// </summary>         
-      
-
+       /// <summary>         /// Массив объектов, которые храним         /// </summary>           
         /// <summary>         /// Ширина окна отрисовки         /// </summary>         
         private int PictureWidth { get; set; }
-
         /// <summary>         /// Высота окна отрисовки         /// </summary>         
         private int PictureHeight { get; set; }
-
-
         /// <summary>         /// Размер парковочного места (ширина)         /// </summary> 
-
         private const int _placeSizeWidth = 210;
-
         /// <summary>         /// Размер парковочного места (высота)         /// </summary>        
         private const int _placeSizeHeight = 80;
 
@@ -43,7 +34,6 @@ namespace WindowsFormsShips
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-
         /// <summary>         /// Перегрузка оператора сложения         /// Логика действия: на парковку добавляется автомобиль   
         /// </summary>         /// <param name="p">Парковка</param>     
         /// <param name="ship">Добавляемый автомобиль</param>         /// <returns></returns>   
@@ -64,7 +54,6 @@ namespace WindowsFormsShips
             }
             return -1;
         }
-
         /// <summary>         /// Перегрузка оператора вычитания    
         /// Логика действия: с парковки забираем автомобиль 
         /// </summary>         /// <param name="p">Парковка</param>    
@@ -80,7 +69,6 @@ namespace WindowsFormsShips
             }
             throw new ParkingNotFoundException(index);
         }
-
         /// <summary>     
         /// Метод проверки заполнености парковочного места (ячейки массива)         /// </summary>    
         /// <param name="index">Номер парковочного места (порядковый номер в массиве)</param>         /// <returns></returns>  
@@ -88,10 +76,7 @@ namespace WindowsFormsShips
         {
             return !_places.ContainsKey(index);
         }
-
-
-
-        /// <summary>  
+    /// <summary>  
         /// Метод отрисовки парковки   
         /// </summary>   
         /// <param name="g"></param>   
@@ -104,7 +89,6 @@ namespace WindowsFormsShips
                 _places[keys[i]].DrawShip(g);
             }
         }
-
         /// <summary> 
         /// Метод отрисовки разметки парковочных мест         /// </summary>         /// <param name="g"></param>  
         private void DrawMarking(Graphics g)
@@ -122,7 +106,6 @@ namespace WindowsFormsShips
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400); 
             }
         }
-
         /// <summary>         /// Индексатор         /// </summary>      
         /// /// <param name="ind"></param>         /// <returns></returns>     
         public T this[int ind]
@@ -135,9 +118,6 @@ namespace WindowsFormsShips
                 }
                 throw new ParkingNotFoundException(ind);
             }
-
-
-
             set
             {
                 if (CheckFreePlace(ind))

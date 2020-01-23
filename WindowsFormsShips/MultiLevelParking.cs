@@ -11,19 +11,14 @@ namespace WindowsFormsShips
     {
         /// <summary>         /// Список с уровнями парковки         /// </summary>    
         List<Parking<IShip>> parkingStages;
-
         /// <summary>         /// Сколько мест на каждом уровне         /// </summary> 
-
-        private const int countPlaces = 20;
+       private const int countPlaces = 20;
 
         /// <summary>         /// Ширина окна отрисовки         /// </summary>       
         private int pictureWidth; 
 
         /// <summary>         /// Высота окна отрисовки         /// </summary>  
        private int pictureHeight; 
-
-
-
         /// <summary>         /// Конструктор         /// </summary>    
         /// /// <param name="countStages">Количество уровенй парковки</param>   
         /// /// <param name="pictureWidth"></param>  
@@ -36,7 +31,6 @@ namespace WindowsFormsShips
                 parkingStages.Add(new Parking<IShip>(countPlaces, pictureWidth, pictureHeight));
             }
         }
-
         /// <summary>         /// Индексатор         /// </summary>         /// <param name="ind"></param>  
         /// /// <returns></returns>   
         public Parking<IShip> this[int ind]
@@ -50,8 +44,6 @@ namespace WindowsFormsShips
                 return null;
             }
         }
-
-
         /// <summary>         /// Сохранение информации по автомобилям на парковках в файл         /// </summary>    
         /// <param name="filename">Путь и имя файла</param>         /// <returns></returns>   
         public bool SaveData(string filename)
@@ -96,7 +88,6 @@ namespace WindowsFormsShips
             }
             return true;
         }
-
         /// <summary>         /// Метод записи информации в файл         /// </summary>  
         /// /// <param name="text">Строка, которую следует записать</param>    
         /// /// <param name="stream">Поток для записи</param>   
@@ -105,7 +96,6 @@ namespace WindowsFormsShips
             byte[] info = new UTF8Encoding(true).GetBytes(text);
             stream.Write(info, 0, info.Length);
         }
-
         /// <summary>         /// Загрузка нформации по автомобилям на парковках из файла      
         /// /// </summary>         /// <param name="filename"></param> 
         /// /// <returns></returns>   
