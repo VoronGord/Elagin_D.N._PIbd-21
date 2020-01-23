@@ -7,16 +7,6 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsShips
 {
-    public enum Direction
-    {
-        Up,
-
-        Down,
-
-        Left,
-
-        Right
-    }
     public class Lincor
     {
         private float StartPosX;
@@ -57,7 +47,6 @@ namespace WindowsFormsShips
             Anchor = anchor;
             Boat = boat;
         }
-
 
         public void SetPosition(int x, int y, int width, int height)
         {
@@ -102,7 +91,6 @@ namespace WindowsFormsShips
                     break;
             }
         }
-
         public void DrawLincor(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -110,16 +98,11 @@ namespace WindowsFormsShips
             // отрисовка палубы 
             Brush brMain = new SolidBrush(MainColor);
             Brush brDop = new SolidBrush(DopColor);
-
-
             g.FillRectangle(brMain, StartPosX + 3, StartPosY + 5, Lincor_Width - 10, 5);
             g.FillRectangle(brMain, StartPosX, StartPosY, Lincor_Width - 5, 5);
             g.FillRectangle(brMain, StartPosX - 6, StartPosY - 5, Lincor_Width + 6, 5);
-
             g.FillRectangle(brMain, StartPosX + 45, StartPosY - 20, 3, 15);
             g.FillRectangle(brMain, StartPosX + 40, StartPosY - 10, 14, 2);
-
-
             if (Gun)
             {
                 g.FillEllipse(brDop, StartPosX + 70, StartPosY - 20, 10, 20);
@@ -136,13 +119,6 @@ namespace WindowsFormsShips
                 g.FillRectangle(brDop, StartPosX + 50, StartPosY - 2, 10, 4);
                 g.FillRectangle(brDop, StartPosX + 10, StartPosY - 2, 10, 4);
             }
-
-
-
-
         }
-
-
-
     }
 }
